@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>프로그래머스 기능개발 – 슈퍼개발자 탄생기 – BrunoSong</title>
+  <title>프로그래머스 크레인 인형뽑기 게임 – 슈퍼개발자 탄생기 – BrunoSong</title>
 
       <meta charset="utf-8" />
     <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
@@ -10,7 +10,7 @@
 
     
     <meta name="description" content="
-  프로그래머스 기능개발 문제
+  프로그래머스 크레인 인형뽑기 게임 문제
 
 
 문제 설명
@@ -20,43 +20,39 @@
 
 먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.
 
+게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 1 x 1 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.
+
+만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.
+
+크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)
+
+게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.
+
 제한 상항
 
-제한 사항
-작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.
-작업 진도는 100 미만의 자연수입니다.
-작업 속도는 100 이하의 자연수입니다.
-배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.
-
-
-  인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.
-  나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.
-  그렇지 않으면 J를 인쇄합니다.
-예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.
-
-
-내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다.
-
-현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요.
-
-제한사항
-현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다.
-인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
-location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.
+board 배열은 2차원 배열로 크기는 5 x 5 이상 30 x 30 이하입니다.
+board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.
+0은 빈 칸을 나타냅니다.
+1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.
+moves 배열의 크기는 1 이상 1,000 이하입니다.
+moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.
 
 제한사항
 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.
 prices의 길이는 2 이상 100,000 이하입니다.
 
 입출력 예
-priorities  location   return 
-[2,1,3,2]       2         1	
-[1,1,9,1,1,1]   0         5 
+
+
+board	                                                             moves       	result
+[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]	[1,5,3,5,1,2,1,4]	4
+
+
 
 입출력 예 설명
-예제 #1
+입출력 예 #1
 
-문제에 나온 예와 같습니다.
+인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.
 
 예제 #2
 
@@ -64,50 +60,70 @@ priorities  location   return
 
 문제 풀이
 
-import java.util.stream.*;
 import java.util.*;
 
 class Solution {
-    public int solution(int[] priorities, int location) {
+    public int solution(int[][] board, int[] moves) {
         int answer = 0;
-        LinkedList&lt;Integer[]&gt; lk = new LinkedList&lt;&gt;();
-
-        for(int i = 0 ; i &lt; priorities.length ; i++){
-            if(i == location){
-                lk.offer(new Integer[]{priorities[i],-1});
-            }else{
-                lk.offer(new Integer[]{priorities[i],0});
-            }
-        }
-
-        int cnt = 0;
-        while (!lk.isEmpty()){
-            Integer[] max = lk.stream().max( (a,b) -&gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0});
-
-            if(max[0] == lk.peek()[0]){
-
-                cnt++;
-                if(lk.poll()[1] == -1){
-                    break;
-                }
-            }else{
-                lk.offer(lk.poll());
-            }
-        }
-
+        int[] popCnt = {0};
         
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
         
-        return cnt;
+        for(int i = 0 ; i &lt; moves.length; i++){
+            int num = grap(board,moves[i]);
+            if(num &gt; 0){
+                input(stack,num,popCnt);    
+            } 
+            
+        }
+        
+        return popCnt[0];
     }
+    
+    public int grap(int[][] board,int index){
+        
+        int returnVal = 0;
+        
+        for(int i = 0 ; i &lt; board.length; i++){
+            int val = board[i][index-1];
+            if(val != 0){
+                returnVal = val;
+                board[i][index-1] = 0;
+                break;
+            }
+        }
+        
+        return returnVal;
+        
+    }
+    
+    
+    public void input(Stack&lt;Integer&gt; temp, int dol,int[] popCnt){
+        
+        if(!temp.empty()){
+            if(dol == temp.peek()){
+                temp.pop();
+                popCnt[0] += 2;
+            }else{
+                temp.push(dol);
+            }   
+        }else{
+            temp.push(dol);
+        }
+        
+    }
+    
 }
+
+
 
 
 정답해설
 
-큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.
+생각보다 문제를 이해하면 쉽게 풀었던 문제다. 스택을 이용해서 처리하면 충분히 풀수 있다.
 " />
     <meta property="og:description" content="
-  프로그래머스 기능개발 문제
+  프로그래머스 크레인 인형뽑기 게임 문제
 
 
 문제 설명
@@ -117,43 +133,39 @@ class Solution {
 
 먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.
 
+게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 1 x 1 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.
+
+만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.
+
+크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)
+
+게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.
+
 제한 상항
 
-제한 사항
-작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.
-작업 진도는 100 미만의 자연수입니다.
-작업 속도는 100 이하의 자연수입니다.
-배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.
-
-
-  인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.
-  나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.
-  그렇지 않으면 J를 인쇄합니다.
-예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.
-
-
-내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다.
-
-현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요.
-
-제한사항
-현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다.
-인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
-location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.
+board 배열은 2차원 배열로 크기는 5 x 5 이상 30 x 30 이하입니다.
+board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.
+0은 빈 칸을 나타냅니다.
+1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.
+moves 배열의 크기는 1 이상 1,000 이하입니다.
+moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.
 
 제한사항
 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.
 prices의 길이는 2 이상 100,000 이하입니다.
 
 입출력 예
-priorities  location   return 
-[2,1,3,2]       2         1	
-[1,1,9,1,1,1]   0         5 
+
+
+board	                                                             moves       	result
+[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]	[1,5,3,5,1,2,1,4]	4
+
+
 
 입출력 예 설명
-예제 #1
+입출력 예 #1
 
-문제에 나온 예와 같습니다.
+인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.
 
 예제 #2
 
@@ -161,54 +173,74 @@ priorities  location   return
 
 문제 풀이
 
-import java.util.stream.*;
 import java.util.*;
 
 class Solution {
-    public int solution(int[] priorities, int location) {
+    public int solution(int[][] board, int[] moves) {
         int answer = 0;
-        LinkedList&lt;Integer[]&gt; lk = new LinkedList&lt;&gt;();
-
-        for(int i = 0 ; i &lt; priorities.length ; i++){
-            if(i == location){
-                lk.offer(new Integer[]{priorities[i],-1});
-            }else{
-                lk.offer(new Integer[]{priorities[i],0});
-            }
-        }
-
-        int cnt = 0;
-        while (!lk.isEmpty()){
-            Integer[] max = lk.stream().max( (a,b) -&gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0});
-
-            if(max[0] == lk.peek()[0]){
-
-                cnt++;
-                if(lk.poll()[1] == -1){
-                    break;
-                }
-            }else{
-                lk.offer(lk.poll());
-            }
-        }
-
+        int[] popCnt = {0};
         
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
         
-        return cnt;
+        for(int i = 0 ; i &lt; moves.length; i++){
+            int num = grap(board,moves[i]);
+            if(num &gt; 0){
+                input(stack,num,popCnt);    
+            } 
+            
+        }
+        
+        return popCnt[0];
     }
+    
+    public int grap(int[][] board,int index){
+        
+        int returnVal = 0;
+        
+        for(int i = 0 ; i &lt; board.length; i++){
+            int val = board[i][index-1];
+            if(val != 0){
+                returnVal = val;
+                board[i][index-1] = 0;
+                break;
+            }
+        }
+        
+        return returnVal;
+        
+    }
+    
+    
+    public void input(Stack&lt;Integer&gt; temp, int dol,int[] popCnt){
+        
+        if(!temp.empty()){
+            if(dol == temp.peek()){
+                temp.pop();
+                popCnt[0] += 2;
+            }else{
+                temp.push(dol);
+            }   
+        }else{
+            temp.push(dol);
+        }
+        
+    }
+    
 }
+
+
 
 
 정답해설
 
-큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.
+생각보다 문제를 이해하면 쉽게 풀었던 문제다. 스택을 이용해서 처리하면 충분히 풀수 있다.
 " />
     
     <meta name="author" content="슈퍼개발자 탄생기" />
 
     
-    <meta property="og:title" content="프로그래머스 기능개발" />
-    <meta property="twitter:title" content="프로그래머스 기능개발" />
+    <meta property="og:title" content="프로그래머스 크레인 인형뽑기 게임" />
+    <meta property="twitter:title" content="프로그래머스 크레인 인형뽑기 게임" />
     
   <!-- Async font loading -->
 <script>
@@ -326,11 +358,11 @@ class Solution {
 
     <div id="main" role="main" class="wrapper-content">
       <article class="posts">
-  <h1>프로그래머스 기능개발</h1>
+  <h1>프로그래머스 크레인 인형뽑기 게임</h1>
 
   <div clsss="meta">
     <span class="date">
-      2020-05-28
+      2020-05-29
     </span>
 
     <ul class="tag">
@@ -346,7 +378,7 @@ class Solution {
 
   <div class="entry">
     <blockquote>
-  <p>프로그래머스 기능개발 문제</p>
+  <p>프로그래머스 크레인 인형뽑기 게임 문제</p>
 </blockquote>
 
 <h2 id="문제-설명">문제 설명</h2>
@@ -356,43 +388,39 @@ class Solution {
 
 <p>먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.</p>
 
+<p>게임 화면은 1 x 1 크기의 칸들로 이루어진 N x N 크기의 정사각 격자이며 위쪽에는 크레인이 있고 오른쪽에는 바구니가 있습니다. (위 그림은 5 x 5 크기의 예시입니다). 각 격자 칸에는 다양한 인형이 들어 있으며 인형이 없는 칸은 빈칸입니다. 모든 인형은 1 x 1 크기의 격자 한 칸을 차지하며 격자의 가장 아래 칸부터 차곡차곡 쌓여 있습니다. 게임 사용자는 크레인을 좌우로 움직여서 멈춘 위치에서 가장 위에 있는 인형을 집어 올릴 수 있습니다. 집어 올린 인형은 바구니에 쌓이게 되는 데, 이때 바구니의 가장 아래 칸부터 인형이 순서대로 쌓이게 됩니다. 다음 그림은 [1번, 5번, 3번] 위치에서 순서대로 인형을 집어 올려 바구니에 담은 모습입니다.</p>
+
+<p>만약 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다. 위 상태에서 이어서 [5번] 위치에서 인형을 집어 바구니에 쌓으면 같은 모양 인형 두 개가 없어집니다.</p>
+
+<p>크레인 작동 시 인형이 집어지지 않는 경우는 없으나 만약 인형이 없는 곳에서 크레인을 작동시키는 경우에는 아무런 일도 일어나지 않습니다. 또한 바구니는 모든 인형이 들어갈 수 있을 만큼 충분히 크다고 가정합니다. (그림에서는 화면표시 제약으로 5칸만으로 표현하였음)</p>
+
+<p>게임 화면의 격자의 상태가 담긴 2차원 배열 board와 인형을 집기 위해 크레인을 작동시킨 위치가 담긴 배열 moves가 매개변수로 주어질 때, 크레인을 모두 작동시킨 후 터트려져 사라진 인형의 개수를 return 하도록 solution 함수를 완성해주세요.</p>
+
 <h2 id="제한-상항">제한 상항</h2>
 
-<p>제한 사항
-작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.
-작업 진도는 100 미만의 자연수입니다.
-작업 속도는 100 이하의 자연수입니다.
-배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.</p>
-
-<ol>
-  <li>인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.</li>
-  <li>나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.</li>
-  <li>그렇지 않으면 J를 인쇄합니다.
-예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.</li>
-</ol>
-
-<p>내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다.</p>
-
-<p>현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요.</p>
-
-<p>제한사항
-현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다.
-인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
-location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.</p>
+<p>board 배열은 2차원 배열로 크기는 5 x 5 이상 30 x 30 이하입니다.
+board의 각 칸에는 0 이상 100 이하인 정수가 담겨있습니다.
+0은 빈 칸을 나타냅니다.
+1 ~ 100의 각 숫자는 각기 다른 인형의 모양을 의미하며 같은 숫자는 같은 모양의 인형을 나타냅니다.
+moves 배열의 크기는 1 이상 1,000 이하입니다.
+moves 배열 각 원소들의 값은 1 이상이며 board 배열의 가로 크기 이하인 자연수입니다.</p>
 
 <h2 id="제한사항">제한사항</h2>
 <p>prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.<br />
 prices의 길이는 2 이상 100,000 이하입니다.</p>
 
 <h2 id="입출력-예">입출력 예</h2>
-<p>priorities  location   return <br />
-[2,1,3,2]       2         1	<br />
-[1,1,9,1,1,1]   0         5 <br /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+board	                                                             moves       	result
+[[0,0,0,0,0],[0,0,1,0,3],[0,2,5,0,1],[4,2,4,4,2],[3,5,1,3,1]]	[1,5,3,5,1,2,1,4]	4
+
+</code></pre></div></div>
 
 <h2 id="입출력-예-설명">입출력 예 설명</h2>
-<p>예제 #1</p>
+<p>입출력 예 #1</p>
 
-<p>문제에 나온 예와 같습니다.</p>
+<p>인형의 처음 상태는 문제에 주어진 예시와 같습니다. 크레인이 [1, 5, 3, 5, 1, 2, 1, 4] 번 위치에서 차례대로 인형을 집어서 바구니에 옮겨 담은 후, 상태는 아래 그림과 같으며 바구니에 담는 과정에서 터트려져 사라진 인형은 4개 입니다.</p>
 
 <p>예제 #2</p>
 
@@ -400,47 +428,67 @@ prices의 길이는 2 이상 100,000 이하입니다.</p>
 
 <h3 id="문제-풀이">문제 풀이</h3>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
-import java.util.stream.*;
 import java.util.*;
 
 class Solution {
-    public int solution(int[] priorities, int location) {
+    public int solution(int[][] board, int[] moves) {
         int answer = 0;
-        LinkedList&lt;Integer[]&gt; lk = new LinkedList&lt;&gt;();
-
-        for(int i = 0 ; i &lt; priorities.length ; i++){
-            if(i == location){
-                lk.offer(new Integer[]{priorities[i],-1});
-            }else{
-                lk.offer(new Integer[]{priorities[i],0});
-            }
-        }
-
-        int cnt = 0;
-        while (!lk.isEmpty()){
-            Integer[] max = lk.stream().max( (a,b) -&gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0});
-
-            if(max[0] == lk.peek()[0]){
-
-                cnt++;
-                if(lk.poll()[1] == -1){
-                    break;
-                }
-            }else{
-                lk.offer(lk.poll());
-            }
-        }
-
+        int[] popCnt = {0};
         
+        Stack&lt;Integer&gt; stack = new Stack&lt;&gt;();
         
-        return cnt;
+        for(int i = 0 ; i &lt; moves.length; i++){
+            int num = grap(board,moves[i]);
+            if(num &gt; 0){
+                input(stack,num,popCnt);    
+            } 
+            
+        }
+        
+        return popCnt[0];
     }
+    
+    public int grap(int[][] board,int index){
+        
+        int returnVal = 0;
+        
+        for(int i = 0 ; i &lt; board.length; i++){
+            int val = board[i][index-1];
+            if(val != 0){
+                returnVal = val;
+                board[i][index-1] = 0;
+                break;
+            }
+        }
+        
+        return returnVal;
+        
+    }
+    
+    
+    public void input(Stack&lt;Integer&gt; temp, int dol,int[] popCnt){
+        
+        if(!temp.empty()){
+            if(dol == temp.peek()){
+                temp.pop();
+                popCnt[0] += 2;
+            }else{
+                temp.push(dol);
+            }   
+        }else{
+            temp.push(dol);
+        }
+        
+    }
+    
 }
+
+
 </code></pre></div></div>
 
 <h2 id="정답해설">정답해설</h2>
 
-<p>큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.</p>
+<p>생각보다 문제를 이해하면 쉽게 풀었던 문제다. 스택을 이용해서 처리하면 충분히 풀수 있다.</p>
 
   </div>
 
@@ -466,17 +514,11 @@ class Solution {
 <div class="pagination">
   
     <span class="prev" >
-      <a href="http://localhost:4000/algo_124_world/">
+      <a href="http://localhost:4000/dist/">
         ← 上一篇
       </a>
     </span>
   
-  
-    <span class="next" >
-      <a href="http://localhost:4000/kakaocrain/">
-        下一篇 →
-      </a>
-    </span>
   
 </div>
     </div>
