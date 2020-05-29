@@ -1,0 +1,92 @@
+I"�
+<blockquote>
+  <p>프로그래머스 124 나라의 숫자 문제</p>
+</blockquote>
+
+<h2 id="문제-설명">문제 설명</h2>
+<p>124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.</p>
+
+<ol>
+  <li>124 나라에는 자연수만 존재합니다.</li>
+  <li>124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.
+예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.</li>
+</ol>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+10진법   124 나라     	10진법	     124 나라
+1	     1	          6	       14
+2	     2	          7	       21
+3	     4      	  8	       22
+4	    11	          9	       24
+5	    12	         10	       41
+
+</code></pre></div></div>
+
+<p>자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요.</p>
+
+<h2 id="제한사항">제한사항</h2>
+<ul>
+  <li>n은 500,000,000이하의 자연수 입니다.</li>
+</ul>
+
+<h2 id="입출력-예">입출력 예</h2>
+<p>priorities  location   return <br />
+[2,1,3,2]       2         1	<br />
+[1,1,9,1,1,1]   0         5 <br /></p>
+
+<h2 id="입출력-예-설명">입출력 예 설명</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+입출력 예
+n	result
+1	1
+2	2
+3	4
+4	11
+
+</code></pre></div></div>
+
+<h3 id="문제-풀이">문제 풀이</h3>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+import java.util.stream.*;
+import java.util.*;
+
+class Solution {
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        LinkedList&lt;Integer[]&gt; lk = new LinkedList&lt;&gt;();
+
+        for(int i = 0 ; i &lt; priorities.length ; i++){
+            if(i == location){
+                lk.offer(new Integer[]{priorities[i],-1});
+            }else{
+                lk.offer(new Integer[]{priorities[i],0});
+            }
+        }
+
+        int cnt = 0;
+        while (!lk.isEmpty()){
+            Integer[] max = lk.stream().max( (a,b) -&gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0});
+
+            if(max[0] == lk.peek()[0]){
+
+                cnt++;
+                if(lk.poll()[1] == -1){
+                    break;
+                }
+            }else{
+                lk.offer(lk.poll());
+            }
+        }
+
+        
+        
+        return cnt;
+    }
+}
+</code></pre></div></div>
+
+<h2 id="정답해설">정답해설</h2>
+
+<p>큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.</p>
+:ET

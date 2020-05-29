@@ -1,0 +1,243 @@
+I"�<h1 id="코드설명">코드설명</h1>
+
+<p>以一个或多个空行来隔开段落；以两个或多个空格来段内换行。</p>
+
+<h3 id="标题">标题</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is an H1
+=============
+
+This is an H2
+-------------
+
+# This is an H1
+
+##  This is an H2
+
+######  This is an H6
+
+</code></pre></div></div>
+
+<h3 id="引用">引用</h3>
+
+<p>在每一行前面写一个<code class="highlighter-rouge">&gt;</code>：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt;
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<blockquote>
+  <p>This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</p>
+
+  <p>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.</p>
+</blockquote>
+
+<p>或者在每一段前面写一个<code class="highlighter-rouge">&gt;</code>：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+
+</code></pre></div></div>
+
+<h3 id="多重引用">多重引用</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; This is the first level of quoting.
+&gt;
+&gt; &gt; This is nested blockquote.
+&gt;
+&gt; Back to the first level.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<blockquote>
+  <p>This is the first level of quoting.</p>
+
+  <blockquote>
+    <p>This is nested blockquote.</p>
+  </blockquote>
+
+  <p>Back to the first level.</p>
+</blockquote>
+
+<h3 id="列表">列表</h3>
+
+<p>列表项占一行，以*、+、-开头即可：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*   Red
+*   Green
+*   Blue
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<ul>
+  <li>Red</li>
+  <li>Green</li>
+  <li>Blue</li>
+</ul>
+
+<p>有序列表只需要将上述标记符换成数字加句点。而且顺序由书写顺序决定，与数字无关，但数字需要从1开始。例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1\.  Bird
+3.  McHale
+2.  Parish
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<ol>
+  <li>Bird</li>
+  <li>McHale</li>
+  <li>Parish</li>
+</ol>
+
+<p>每一个列表项可以多行：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<ul>
+  <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</li>
+  <li>Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.</li>
+</ul>
+
+<h3 id="代码块">代码块</h3>
+
+<p>每一行前面缩进四个或以上个空格，就认为是开始了一段代码块。代码块内原样输出。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a normal paragraph:
+
+    This is a code block.
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p>This is a normal paragraph:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>This is a code block.
+
+</code></pre></div></div>
+
+<h3 id="横线">横线</h3>
+
+<p>三个或更多个<code class="highlighter-rouge">*</code>、<code class="highlighter-rouge">-</code>（它们之间可以有空格）会产生横线：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>* * *
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<hr />
+
+<h3 id="链接">链接</h3>
+
+<p>内嵌链接：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I get 10 times more traffic from [Google](http://google.com/ "Google")
+than from [Yahoo](http://search.yahoo.com/ "Yahoo Search") or
+[MSN](http://search.msn.com/ "MSN Search").
+
+</code></pre></div></div>
+
+<p>或参考文献式链接（缺省的链接标记认为与文本一致）：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+
+  [1]: http://google.com/        "Google"
+  [2]: http://search.yahoo.com/  "Yahoo Search"
+  [3]: http://search.msn.com/    "MSN Search"
+
+I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+  [google]: http://google.com/        "Google"
+  [yahoo]:  http://search.yahoo.com/  "Yahoo Search"
+  [msn]:    http://search.msn.com/    "MSN Search"
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p>I get 10 times more traffic from <a href="http://google.com/" title="Google">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search">MSN</a>.</p>
+
+<p>如果直接以链接地址作为链接文本，可以用如下快捷写法：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;http://www.shengbin.me&gt; 效果：
+
+</code></pre></div></div>
+
+<p><a href="http://www.shengbin.me/">http://www.shengbin.me</a></p>
+
+<h3 id="强调">强调</h3>
+
+<p>单个<code class="highlighter-rouge">*</code>或<code class="highlighter-rouge">_</code>产生斜体，两个（<code class="highlighter-rouge">**</code>、<code class="highlighter-rouge">__</code>）则产生粗体。例如：</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>*like* _this_
+
+**like** **this**
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p><em>like</em> <em>this</em></p>
+
+<p><strong>like</strong> <strong>this</strong></p>
+
+<h3 id="内嵌代码">内嵌代码</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>code: `echo hello`
+
+</code></pre></div></div>
+
+<p>效果：</p>
+
+<p>code: <code class="highlighter-rouge">echo hello</code></p>
+
+<h3 id="图片">图片</h3>
+
+<p>图片与链接类似，只需在文本前面加上感叹号<code class="highlighter-rouge">!</code>即可。图片位置和大小无法通过Markdown来指定。</p>
+
+<h3 id="转义字符">转义字符</h3>
+
+<p>以下特殊字符需要用<code class="highlighter-rouge">\</code>转义得到。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+</code></pre></div></div>
+:ET

@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.0.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-05-28T09:57:38+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">슈퍼개발자 탄생기</title><subtitle>BrunoSong</subtitle><entry><title type="html">프로그래머스 기능개발</title><link href="http://localhost:4000/dist/" rel="alternate" type="text/html" title="프로그래머스 기능개발" /><published>2020-05-28T09:00:24+09:00</published><updated>2020-05-28T09:00:24+09:00</updated><id>http://localhost:4000/dist</id><content type="html" xml:base="http://localhost:4000/dist/">&lt;blockquote&gt;
+  &lt;p&gt;프로그래머스 기능개발 문제&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.&lt;/p&gt;
+
+&lt;p&gt;또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다.&lt;/p&gt;
+
+&lt;p&gt;먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요.&lt;/p&gt;
+
+&lt;h2 id=&quot;제한-상항&quot;&gt;제한 상항&lt;/h2&gt;
+
+&lt;p&gt;제한 사항
+작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다.
+작업 진도는 100 미만의 자연수입니다.
+작업 속도는 100 이하의 자연수입니다.
+배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.&lt;/li&gt;
+  &lt;li&gt;나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.&lt;/li&gt;
+  &lt;li&gt;그렇지 않으면 J를 인쇄합니다.
+예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다.&lt;/p&gt;
+
+&lt;p&gt;현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요.&lt;/p&gt;
+
+&lt;p&gt;제한사항
+현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다.
+인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
+location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;제한사항&quot;&gt;제한사항&lt;/h2&gt;
+&lt;p&gt;prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.&lt;br /&gt;
+prices의 길이는 2 이상 100,000 이하입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;입출력-예&quot;&gt;입출력 예&lt;/h2&gt;
+&lt;p&gt;priorities  location   return &lt;br /&gt;
+[2,1,3,2]       2         1	&lt;br /&gt;
+[1,1,9,1,1,1]   0         5 &lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;입출력-예-설명&quot;&gt;입출력 예 설명&lt;/h2&gt;
+&lt;p&gt;예제 #1&lt;/p&gt;
+
+&lt;p&gt;문제에 나온 예와 같습니다.&lt;/p&gt;
+
+&lt;p&gt;예제 #2&lt;/p&gt;
+
+&lt;p&gt;6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;문제-풀이&quot;&gt;문제 풀이&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+import java.util.stream.*;
+import java.util.*;
+
+class Solution {
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        LinkedList&amp;lt;Integer[]&amp;gt; lk = new LinkedList&amp;lt;&amp;gt;();
+
+        for(int i = 0 ; i &amp;lt; priorities.length ; i++){
+            if(i == location){
+                lk.offer(new Integer[]{priorities[i],-1});
+            }else{
+                lk.offer(new Integer[]{priorities[i],0});
+            }
+        }
+
+        int cnt = 0;
+        while (!lk.isEmpty()){
+            Integer[] max = lk.stream().max( (a,b) -&amp;gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0});
+
+            if(max[0] == lk.peek()[0]){
+
+                cnt++;
+                if(lk.poll()[1] == -1){
+                    break;
+                }
+            }else{
+                lk.offer(lk.poll());
+            }
+        }
+
+        
+        
+        return cnt;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;정답해설&quot;&gt;정답해설&lt;/h2&gt;
+
+&lt;p&gt;큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.&lt;/p&gt;</content><author><name></name></author><category term="알고리즘" /><summary type="html">프로그래머스 기능개발 문제 문제 설명 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다. 또, 각 기능의 개발속도는 모두 다르기 때문에 뒤에 있는 기능이 앞에 있는 기능보다 먼저 개발될 수 있고, 이때 뒤에 있는 기능은 앞에 있는 기능이 배포될 때 함께 배포됩니다. 먼저 배포되어야 하는 순서대로 작업의 진도가 적힌 정수 배열 progresses와 각 작업의 개발 속도가 적힌 정수 배열 speeds가 주어질 때 각 배포마다 몇 개의 기능이 배포되는지를 return 하도록 solution 함수를 완성하세요. 제한 상항 제한 사항 작업의 개수(progresses, speeds배열의 길이)는 100개 이하입니다. 작업 진도는 100 미만의 자연수입니다. 작업 속도는 100 이하의 자연수입니다. 배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다. 인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다. 나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다. 그렇지 않으면 J를 인쇄합니다. 예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다. 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다. 현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요. 제한사항 현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다. 인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다. location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다. 제한사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 priorities location return [2,1,3,2] 2 1 [1,1,9,1,1,1] 0 5 입출력 예 설명 예제 #1 문제에 나온 예와 같습니다. 예제 #2 6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다. 문제 풀이 import java.util.stream.*; import java.util.*; class Solution { public int solution(int[] priorities, int location) { int answer = 0; LinkedList&amp;lt;Integer[]&amp;gt; lk = new LinkedList&amp;lt;&amp;gt;(); for(int i = 0 ; i &amp;lt; priorities.length ; i++){ if(i == location){ lk.offer(new Integer[]{priorities[i],-1}); }else{ lk.offer(new Integer[]{priorities[i],0}); } } int cnt = 0; while (!lk.isEmpty()){ Integer[] max = lk.stream().max( (a,b) -&amp;gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0}); if(max[0] == lk.peek()[0]){ cnt++; if(lk.poll()[1] == -1){ break; } }else{ lk.offer(lk.poll()); } } return cnt; } } 정답해설 큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.</summary></entry><entry><title type="html">프로그래머스 124 나라의 숫자</title><link href="http://localhost:4000/algo_124_world/" rel="alternate" type="text/html" title="프로그래머스 124 나라의 숫자" /><published>2020-05-28T09:00:24+09:00</published><updated>2020-05-28T09:00:24+09:00</updated><id>http://localhost:4000/algo_124_world</id><content type="html" xml:base="http://localhost:4000/algo_124_world/">&lt;blockquote&gt;
+  &lt;p&gt;프로그래머스 124 나라의 숫자 문제&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;124 나라에는 자연수만 존재합니다.&lt;/li&gt;
+  &lt;li&gt;124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다.
+예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+10진법   124 나라     	10진법	     124 나라
+1	     1	          6	       14
+2	     2	          7	       21
+3	     4      	  8	       22
+4	    11	          9	       24
+5	    12	         10	       41
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요.&lt;/p&gt;
+
+&lt;h2 id=&quot;제한사항&quot;&gt;제한사항&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;n은 500,000,000이하의 자연수 입니다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;입출력-예&quot;&gt;입출력 예&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+입출력 예
+n	result
+1	1
+2	2
+3	4
+4	11
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;문제-풀이&quot;&gt;문제 풀이&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Solution {
+    public String solution(int n) {
+        String answer = &quot;&quot;;
+        
+        int number = n;
+        int remainder = 0;
+        
+        while(number &amp;gt; 0){
+            
+            remainder = number % 3;
+            number = number / 3;
+            
+            if(remainder == 1){
+                answer = &quot;1&quot; + answer; 
+            }else if(remainder == 0){
+                answer = &quot;4&quot; + answer;
+                number -= 1;
+            }else if(remainder == 2){
+                 answer = &quot;2&quot; + answer;
+            }
+        
+        }
+        
+        return answer;
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;정답해설&quot;&gt;정답해설&lt;/h2&gt;
+
+&lt;p&gt;기수변환 문제이다. 해맸던 부분이 나머지 부분이 0이 나올때 값에 -1을 해줘야 한다는거다. 안해주면 한바퀴를 더 돌게 되어 원하지 않은 값이 나온다.&lt;/p&gt;</content><author><name></name></author><category term="알고리즘" /><summary type="html">프로그래머스 124 나라의 숫자 문제 문제 설명 124 나라가 있습니다. 124 나라에서는 10진법이 아닌 다음과 같은 자신들만의 규칙으로 수를 표현합니다. 124 나라에는 자연수만 존재합니다. 124 나라에는 모든 수를 표현할 때 1, 2, 4만 사용합니다. 예를 들어서 124 나라에서 사용하는 숫자는 다음과 같이 변환됩니다. 10진법 124 나라 10진법 124 나라 1 1 6 14 2 2 7 21 3 4 8 22 4 11 9 24 5 12 10 41 자연수 n이 매개변수로 주어질 때, n을 124 나라에서 사용하는 숫자로 바꾼 값을 return 하도록 solution 함수를 완성해 주세요. 제한사항 n은 500,000,000이하의 자연수 입니다. 입출력 예 입출력 예 n result 1 1 2 2 3 4 4 11 문제 풀이 class Solution { public String solution(int n) { String answer = &quot;&quot;; int number = n; int remainder = 0; while(number &amp;gt; 0){ remainder = number % 3; number = number / 3; if(remainder == 1){ answer = &quot;1&quot; + answer; }else if(remainder == 0){ answer = &quot;4&quot; + answer; number -= 1; }else if(remainder == 2){ answer = &quot;2&quot; + answer; } } return answer; } } 정답해설 기수변환 문제이다. 해맸던 부분이 나머지 부분이 0이 나올때 값에 -1을 해줘야 한다는거다. 안해주면 한바퀴를 더 돌게 되어 원하지 않은 값이 나온다.</summary></entry><entry><title type="html">프로그래머스 프린터</title><link href="http://localhost:4000/printer/" rel="alternate" type="text/html" title="프로그래머스 프린터" /><published>2020-05-26T09:00:24+09:00</published><updated>2020-05-26T09:00:24+09:00</updated><id>http://localhost:4000/printer</id><content type="html" xml:base="http://localhost:4000/printer/">&lt;blockquote&gt;
+  &lt;p&gt;프로그래머스 프린터 문제&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;일반적인 프린터는 인쇄 요청이 들어온 순서대로 인쇄합니다. 그렇기 때문에 중요한 문서가 나중에 인쇄될 수 있습니다. 이런 문제를 보완하기 위해 중요도가 높은 문서를 먼저 인쇄하는 프린터를 개발했습니다. 이 새롭게 개발한 프린터는 아래와 같은 방식으로 인쇄 작업을 수행합니다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다.&lt;/li&gt;
+  &lt;li&gt;나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다.&lt;/li&gt;
+  &lt;li&gt;그렇지 않으면 J를 인쇄합니다.
+예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다.&lt;/p&gt;
+
+&lt;p&gt;현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요.&lt;/p&gt;
+
+&lt;p&gt;제한사항
+현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다.
+인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다.
+location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;제한사항&quot;&gt;제한사항&lt;/h2&gt;
+&lt;p&gt;prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.&lt;br /&gt;
+prices의 길이는 2 이상 100,000 이하입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;입출력-예&quot;&gt;입출력 예&lt;/h2&gt;
+&lt;p&gt;priorities  location   return &lt;br /&gt;
+[2,1,3,2]       2         1	&lt;br /&gt;
+[1,1,9,1,1,1]   0         5 &lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;입출력-예-설명&quot;&gt;입출력 예 설명&lt;/h2&gt;
+&lt;p&gt;예제 #1&lt;/p&gt;
+
+&lt;p&gt;문제에 나온 예와 같습니다.&lt;/p&gt;
+
+&lt;p&gt;예제 #2&lt;/p&gt;
+
+&lt;p&gt;6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;문제-풀이&quot;&gt;문제 풀이&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+import java.util.stream.*;
+import java.util.*;
+
+class Solution {
+    public int solution(int[] priorities, int location) {
+        int answer = 0;
+        LinkedList&amp;lt;Integer[]&amp;gt; lk = new LinkedList&amp;lt;&amp;gt;();
+
+        for(int i = 0 ; i &amp;lt; priorities.length ; i++){
+            if(i == location){
+                lk.offer(new Integer[]{priorities[i],-1});
+            }else{
+                lk.offer(new Integer[]{priorities[i],0});
+            }
+        }
+
+        int cnt = 0;
+        while (!lk.isEmpty()){
+            Integer[] max = lk.stream().max( (a,b) -&amp;gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0});
+
+            if(max[0] == lk.peek()[0]){
+
+                cnt++;
+                if(lk.poll()[1] == -1){
+                    break;
+                }
+            }else{
+                lk.offer(lk.poll());
+            }
+        }
+
+        
+        
+        return cnt;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;정답해설&quot;&gt;정답해설&lt;/h2&gt;
+
+&lt;p&gt;큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.&lt;/p&gt;</content><author><name></name></author><category term="알고리즘" /><summary type="html">프로그래머스 프린터 문제 문제 설명 일반적인 프린터는 인쇄 요청이 들어온 순서대로 인쇄합니다. 그렇기 때문에 중요한 문서가 나중에 인쇄될 수 있습니다. 이런 문제를 보완하기 위해 중요도가 높은 문서를 먼저 인쇄하는 프린터를 개발했습니다. 이 새롭게 개발한 프린터는 아래와 같은 방식으로 인쇄 작업을 수행합니다. 인쇄 대기목록의 가장 앞에 있는 문서(J)를 대기목록에서 꺼냅니다. 나머지 인쇄 대기목록에서 J보다 중요도가 높은 문서가 한 개라도 존재하면 J를 대기목록의 가장 마지막에 넣습니다. 그렇지 않으면 J를 인쇄합니다. 예를 들어, 4개의 문서(A, B, C, D)가 순서대로 인쇄 대기목록에 있고 중요도가 2 1 3 2 라면 C D A B 순으로 인쇄하게 됩니다. 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 알고 싶습니다. 위의 예에서 C는 1번째로, A는 3번째로 인쇄됩니다. 현재 대기목록에 있는 문서의 중요도가 순서대로 담긴 배열 priorities와 내가 인쇄를 요청한 문서가 현재 대기목록의 어떤 위치에 있는지를 알려주는 location이 매개변수로 주어질 때, 내가 인쇄를 요청한 문서가 몇 번째로 인쇄되는지 return 하도록 solution 함수를 작성해주세요. 제한사항 현재 대기목록에는 1개 이상 100개 이하의 문서가 있습니다. 인쇄 작업의 중요도는 1~9로 표현하며 숫자가 클수록 중요하다는 뜻입니다. location은 0 이상 (현재 대기목록에 있는 작업 수 - 1) 이하의 값을 가지며 대기목록의 가장 앞에 있으면 0, 두 번째에 있으면 1로 표현합니다. 제한사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 priorities location return [2,1,3,2] 2 1 [1,1,9,1,1,1] 0 5 입출력 예 설명 예제 #1 문제에 나온 예와 같습니다. 예제 #2 6개의 문서(A, B, C, D, E, F)가 인쇄 대기목록에 있고 중요도가 1 1 9 1 1 1 이므로 C D E F A B 순으로 인쇄합니다. 문제 풀이 import java.util.stream.*; import java.util.*; class Solution { public int solution(int[] priorities, int location) { int answer = 0; LinkedList&amp;lt;Integer[]&amp;gt; lk = new LinkedList&amp;lt;&amp;gt;(); for(int i = 0 ; i &amp;lt; priorities.length ; i++){ if(i == location){ lk.offer(new Integer[]{priorities[i],-1}); }else{ lk.offer(new Integer[]{priorities[i],0}); } } int cnt = 0; while (!lk.isEmpty()){ Integer[] max = lk.stream().max( (a,b) -&amp;gt; a[0].compareTo(b[0]) ).orElse(new Integer[]{-1,0}); if(max[0] == lk.peek()[0]){ cnt++; if(lk.poll()[1] == -1){ break; } }else{ lk.offer(lk.poll()); } } return cnt; } } 정답해설 큐를 이용하여 풀었다. location에 값이 다른 값과 똑같은것들이 있기에 Integer[값,선택여부]를 만들어서 처리하였다.</summary></entry><entry><title type="html">프로그래머스 주식가격</title><link href="http://localhost:4000/stock/" rel="alternate" type="text/html" title="프로그래머스 주식가격" /><published>2020-05-26T09:00:24+09:00</published><updated>2020-05-26T09:00:24+09:00</updated><id>http://localhost:4000/stock</id><content type="html" xml:base="http://localhost:4000/stock/">&lt;blockquote&gt;
+  &lt;p&gt;프로그래머스 주식가격 문제&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;문제-설명&quot;&gt;문제 설명&lt;/h2&gt;
+&lt;p&gt;초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.&lt;/p&gt;
+
+&lt;h2 id=&quot;제한사항&quot;&gt;제한사항&lt;/h2&gt;
+&lt;p&gt;prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.&lt;br /&gt;
+prices의 길이는 2 이상 100,000 이하입니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;입출력-예&quot;&gt;입출력 예&lt;/h2&gt;
+&lt;p&gt;prices&lt;br /&gt;
+[1, 2, 3, 2, 3]	&lt;br /&gt;
+return&lt;br /&gt;
+[4, 3, 1, 1, 0]&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;입출력-예-설명&quot;&gt;입출력 예 설명&lt;/h2&gt;
+&lt;p&gt;1초 시점의 ₩1은 끝까지 가격이 떨어지지 않았습니다.&lt;br /&gt;
+2초 시점의 ₩2은 끝까지 가격이 떨어지지 않았습니다.&lt;br /&gt;
+3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다.&lt;br /&gt;
+4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.&lt;br /&gt;
+5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;문제-풀이&quot;&gt;문제 풀이&lt;/h3&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import java.util.*;
+
+class Solution {
+    public int[] solution(int[] prices) {
+        int[] answer = new int[prices.length];
+        
+        for(int i = 0 ; i &amp;lt; prices.length - 1; i++){
+           int val = prices[i];
+           int cnt = 0; 
+            
+           for(int j = i+1 ; j &amp;lt; prices.length ; j++){
+               
+               if(val &amp;lt;= prices[j]){
+                   cnt++;
+               }else{
+                   cnt++;
+                   break;
+               }
+           }
+           answer[i] = cnt;
+        }
+        
+        return answer;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;정답해설&quot;&gt;정답해설&lt;/h2&gt;
+
+&lt;p&gt;스택아니면 큐를 써써 풀수도 있지만 일단은 그냥 풀어봤다.  &lt;br /&gt;
+이중포문으로 자신보다 크면 카운트를 늘리고 작으면 카운트를 늘리고 바로 빠져나와서 초를 세준다.&lt;/p&gt;</content><author><name></name></author><category term="알고리즘" /><summary type="html">프로그래머스 주식가격 문제 문제 설명 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요. 제한사항 prices의 각 가격은 1 이상 10,000 이하인 자연수입니다. prices의 길이는 2 이상 100,000 이하입니다. 입출력 예 prices [1, 2, 3, 2, 3] return [4, 3, 1, 1, 0] 입출력 예 설명 1초 시점의 ₩1은 끝까지 가격이 떨어지지 않았습니다. 2초 시점의 ₩2은 끝까지 가격이 떨어지지 않았습니다. 3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다. 4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다. 5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다. 문제 풀이 import java.util.*; class Solution { public int[] solution(int[] prices) { int[] answer = new int[prices.length]; for(int i = 0 ; i &amp;lt; prices.length - 1; i++){ int val = prices[i]; int cnt = 0; for(int j = i+1 ; j &amp;lt; prices.length ; j++){ if(val &amp;lt;= prices[j]){ cnt++; }else{ cnt++; break; } } answer[i] = cnt; } return answer; } } 정답해설 스택아니면 큐를 써써 풀수도 있지만 일단은 그냥 풀어봤다. 이중포문으로 자신보다 크면 카운트를 늘리고 작으면 카운트를 늘리고 바로 빠져나와서 초를 세준다.</summary></entry><entry><title type="html">포스트1</title><link href="http://localhost:4000/document/" rel="alternate" type="text/html" title="포스트1" /><published>2020-05-22T00:00:00+09:00</published><updated>2020-05-22T00:00:00+09:00</updated><id>http://localhost:4000/document</id><content type="html" xml:base="http://localhost:4000/document/">&lt;h2 id=&quot;뭐지&quot;&gt;뭐지?&lt;/h2&gt;
+
+&lt;p&gt;LOFFER是一个&lt;strong&gt;博客模板&lt;/strong&gt;，使用GitHub Pages发布个人博客是没有任何问题的。 &lt;strong&gt;但是:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;请勿发布成人向内容&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;不要将大量图片上传到GitHub&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;如何使用&quot;&gt;如何使用&lt;/h2&gt;
+
+&lt;p&gt;首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。&lt;/p&gt;
+
+&lt;h3 id=&quot;第一步-fork到你的github&quot;&gt;第一步 Fork到你的GitHub&lt;/h3&gt;
+
+&lt;p&gt;请点击&lt;a href=&quot;https://github.com/&quot;&gt;GitHub&lt;/a&gt;，注册一个GitHub账户。我们可以理解Git就是个文件版本管理系统，本身并不需要会代码即可使用。&lt;/p&gt;
+
+&lt;p&gt;现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，你可以把这个代码库复制到你自己的GitHub账户中，这个操作叫做Fork。&lt;/p&gt;
+
+&lt;p&gt;点击&lt;a href=&quot;https://github.com/FromEndWorld/LOFFER&quot;&gt;LOFFER&lt;/a&gt;，进入LOFFER的GitHub Repository页面，然后点Fork：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/fork.gif&quot; alt=&quot;gif&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后你立刻就可以看到LOFFER再次出现，这次它已经属于你了，这里我建议你重命名它，点击settings，给你的博客起个名字（请尽量使用字母而非中文）。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/rename.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后，向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/pages.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/published.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;你可能会看到网站长得很丑，请继续下一步.&lt;/p&gt;
+
+&lt;h3 id=&quot;第二步-设置站点信息&quot;&gt;第二步 设置站点信息&lt;/h3&gt;
+
+&lt;p&gt;在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，点击右上角笔形图标修改文档。&lt;/p&gt;
+
+&lt;p&gt;修改完成后，点击“Commit changes”。每次修改过代码库并且commit后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。&lt;/p&gt;
+
+&lt;p&gt;还有一点，&lt;strong&gt;LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“_posts中的文档作者保留权利”这样的内容。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;第三步-发布博文&quot;&gt;第三步 发布博文&lt;/h3&gt;
+
+&lt;p&gt;在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。&lt;/p&gt;
+
+&lt;p&gt;这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。&lt;/p&gt;
+
+&lt;p&gt;更简单的办法是使用&lt;a href=&quot;https://typora.io/&quot;&gt;Typora&lt;/a&gt;，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Typora.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+layout: post
+title: LOFFER文档
+date: 2019-06-02
+Author: 来自中世界
+categories: 
+tags: [sample, document]
+comments: true
+--- 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;完成后，保存为.md文件，文件名是date-标题，例如 2019-06-02-document.md (注意这里的标题会成为这个post的URL，所以推荐使用字母而非中文，它不影响页面上显示的标题)。然后上传到_posts文件夹，commit，很快就可以在博客上看到新文章了。&lt;/p&gt;
+
+&lt;h3 id=&quot;可选图片怎么办&quot;&gt;可选：图片怎么办？&lt;/h3&gt;
+
+&lt;p&gt;少量图片可以上传到images文件夹，然后在博文中添加。&lt;/p&gt;
+
+&lt;p&gt;但是GitHub用来当做图床有滥用之嫌，如果你的博客以图片为主，建议选择外链图床，例如&lt;a href=&quot;https://sm.ms/&quot;&gt;sm.ms&lt;/a&gt;就是和很好的选择。&lt;/p&gt;
+
+&lt;p&gt;如果想要寻找更适合自己的图床，敬请Google一下。&lt;/p&gt;
+
+&lt;p&gt;在博文中添加图片的Markdown语法是：&lt;code class=&quot;highlighter-rouge&quot;&gt;![图片名](URL)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;可选添加评论区&quot;&gt;可选：添加评论区&lt;/h3&gt;
+
+&lt;p&gt;LOFFER支持Disqus评论，虽然Disqus很丑，但是它是免费的，设置起来又方便，因此大家也就不要嫌弃它。&lt;/p&gt;
+
+&lt;p&gt;首先，注册一个&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;账户，我们可以选择这个免费方案：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-plan.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;注册成功后，新建一个站点（site），以LOFFER为例设置步骤如下：&lt;/p&gt;
+
+&lt;p&gt;首先站点名LOFFER，生成了shortname是loffer，类型可以随便选。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-1.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;安装时选择Jekyll。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-2.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;最后填入你的博客地址，语言可以选中文，点Complete，即可！&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/FromEndWorld/LOFFER/master/images/Disqus-3.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;然后需要回到你的博客，修改_config.yml文件，在disqus字段填上你的shortname，commit，完成！&lt;/p&gt;
+
+&lt;h3 id=&quot;导入lofter的内容&quot;&gt;导入LOFTER的内容&lt;/h3&gt;
+
+&lt;p&gt;这部分由于LOFTER的导出文件十分&lt;del&gt;优秀&lt;/del&gt;，需要另外解决。&lt;/p&gt;
+
+&lt;p&gt;诸位可以使用&lt;a href=&quot;http://underdream.lofter.com/post/38ea7d_1c5d8a983&quot;&gt;墨问非名太太的脚本&lt;/a&gt;，其中选择Jekyll输出即可。&lt;/p&gt;
+
+&lt;p&gt;我个人也在折腾一个脚本，目前还没有完全debug清楚，不管如何，请先在lofter里导出一下，存在本地也是好的，贴吧可以让2017以前所有内容全部消失，中国互联网，没什么不可能发生的。&lt;/p&gt;</content><author><name></name></author><category term="sample" /><category term="document" /><summary type="html">뭐지? LOFFER是一个博客模板，使用GitHub Pages发布个人博客是没有任何问题的。 但是: 请勿发布成人向内容 不要将大量图片上传到GitHub 如何使用 首先，这个博客主题适应手机阅读，但是，要使用它建立你自己的博客，你需要上电脑操作。 第一步 Fork到你的GitHub 请点击GitHub，注册一个GitHub账户。我们可以理解Git就是个文件版本管理系统，本身并不需要会代码即可使用。 现在你看到的LOFFER，是作为一个GitHub上的Repository（代码库）存在的，你可以把这个代码库复制到你自己的GitHub账户中，这个操作叫做Fork。 点击LOFFER，进入LOFFER的GitHub Repository页面，然后点Fork： 然后你立刻就可以看到LOFFER再次出现，这次它已经属于你了，这里我建议你重命名它，点击settings，给你的博客起个名字（请尽量使用字母而非中文）。 然后，向下拉页面，你会看到“GitHub Pages”，这是GitHub内置的网站host服务，选择master，如图所示： 在几秒钟后，刷新此页面，你通常会看到这个绿色的东西（如果没看到，多等一会），你的网站已经发布成功，点击这个链接，即可查看： 你可能会看到网站长得很丑，请继续下一步. 第二步 设置站点信息 在你的博客的GitHub代码库页面里，选择Code，文件列表里选择_config.yml，点击打开，点击右上角笔形图标修改文档。 修改完成后，点击“Commit changes”。每次修改过代码库并且commit后，GitHub Pages都会自动重新发布网站，只要等上几分钟，再次刷新你的博客页面，就会看到你的修改了。 还有一点，LOFFER使用的是MIT协议，大意就是全部开源随意使用，如果你要保留自己博文的权利，请编辑LICENSE文件，写上类似“_posts中的文档作者保留权利”这样的内容。 第三步 发布博文 在你的博客的GitHub代码库页面里，点开_posts文件夹，这里面就是你的博客文章。 这些文章使用的格式是Markdown，文件后缀名是md，这是一种非常简单易用的有格式文本标记语言，你应该已经注意到，在LOFFER自带的示例性博文中有一篇中文的Markdown语法介绍。 更简单的办法是使用Typora，这是一个全图形化界面，全实时预览的Markdown写作软件，非常轻量，而且免费。 在发布博文前，你需要在文章的头部添加这样的内容，包括你的文章标题，发布日期，作者名，和tag等。</summary></entry><entry><title type="html">Markdown语法简介</title><link href="http://localhost:4000/chinese-markdown-cheatsheet/" rel="alternate" type="text/html" title="Markdown语法简介" /><published>2013-07-16T00:00:00+09:00</published><updated>2013-07-16T00:00:00+09:00</updated><id>http://localhost:4000/chinese-markdown-cheatsheet</id><content type="html" xml:base="http://localhost:4000/chinese-markdown-cheatsheet/">&lt;h1 id=&quot;코드설명&quot;&gt;코드설명&lt;/h1&gt;
+
+&lt;p&gt;以一个或多个空行来隔开段落；以两个或多个空格来段内换行。&lt;/p&gt;
+
+&lt;h3 id=&quot;标题&quot;&gt;标题&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is an H1
+=============
+
+This is an H2
+-------------
+
+# This is an H1
+
+##  This is an H2
+
+######  This is an H6
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;引用&quot;&gt;引用&lt;/h3&gt;
+
+&lt;p&gt;在每一行前面写一个&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&amp;gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&amp;gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&amp;gt;
+&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&amp;gt; id sem consectetuer libero luctus adipiscing.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/p&gt;
+
+  &lt;p&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;或者在每一段前面写一个&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+&amp;gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+id sem consectetuer libero luctus adipiscing.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;多重引用&quot;&gt;多重引用&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; This is the first level of quoting.
+&amp;gt;
+&amp;gt; &amp;gt; This is nested blockquote.
+&amp;gt;
+&amp;gt; Back to the first level.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;This is the first level of quoting.&lt;/p&gt;
+
+  &lt;blockquote&gt;
+    &lt;p&gt;This is nested blockquote.&lt;/p&gt;
+  &lt;/blockquote&gt;
+
+  &lt;p&gt;Back to the first level.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;列表&quot;&gt;列表&lt;/h3&gt;
+
+&lt;p&gt;列表项占一行，以*、+、-开头即可：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*   Red
+*   Green
+*   Blue
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Red&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;有序列表只需要将上述标记符换成数字加句点。而且顺序由书写顺序决定，与数字无关，但数字需要从1开始。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;1\.  Bird
+3.  McHale
+2.  Parish
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Bird&lt;/li&gt;
+  &lt;li&gt;McHale&lt;/li&gt;
+  &lt;li&gt;Parish&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;每一个列表项可以多行：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,
+viverra nec, fringilla in, laoreet vitae, risus.
+*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+Suspendisse id sem consectetuer libero luctus adipiscing.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.&lt;/li&gt;
+  &lt;li&gt;Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse id sem consectetuer libero luctus adipiscing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;代码块&quot;&gt;代码块&lt;/h3&gt;
+
+&lt;p&gt;每一行前面缩进四个或以上个空格，就认为是开始了一段代码块。代码块内原样输出。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is a normal paragraph:
+
+    This is a code block.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;p&gt;This is a normal paragraph:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;This is a code block.
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;横线&quot;&gt;横线&lt;/h3&gt;
+
+&lt;p&gt;三个或更多个&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;（它们之间可以有空格）会产生横线：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;* * *
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;链接&quot;&gt;链接&lt;/h3&gt;
+
+&lt;p&gt;内嵌链接：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I get 10 times more traffic from [Google](http://google.com/ &quot;Google&quot;)
+than from [Yahoo](http://search.yahoo.com/ &quot;Yahoo Search&quot;) or
+[MSN](http://search.msn.com/ &quot;MSN Search&quot;).
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;或参考文献式链接（缺省的链接标记认为与文本一致）：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+
+  [1]: http://google.com/        &quot;Google&quot;
+  [2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+  [3]: http://search.msn.com/    &quot;MSN Search&quot;
+
+I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+  [google]: http://google.com/        &quot;Google&quot;
+  [yahoo]:  http://search.yahoo.com/  &quot;Yahoo Search&quot;
+  [msn]:    http://search.msn.com/    &quot;MSN Search&quot;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;p&gt;I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot; title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from &lt;a href=&quot;http://search.yahoo.com/&quot; title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot; title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;如果直接以链接地址作为链接文本，可以用如下快捷写法：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;http://www.shengbin.me&amp;gt; 效果：
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.shengbin.me/&quot;&gt;http://www.shengbin.me&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;强调&quot;&gt;强调&lt;/h3&gt;
+
+&lt;p&gt;单个&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;产生斜体，两个（&lt;code class=&quot;highlighter-rouge&quot;&gt;**&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;__&lt;/code&gt;）则产生粗体。例如：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;*like* _this_
+
+**like** **this**
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;like&lt;/em&gt; &lt;em&gt;this&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;like&lt;/strong&gt; &lt;strong&gt;this&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;内嵌代码&quot;&gt;内嵌代码&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;code: `echo hello`
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;效果：&lt;/p&gt;
+
+&lt;p&gt;code: &lt;code class=&quot;highlighter-rouge&quot;&gt;echo hello&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;图片&quot;&gt;图片&lt;/h3&gt;
+
+&lt;p&gt;图片与链接类似，只需在文本前面加上感叹号&lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;即可。图片位置和大小无法通过Markdown来指定。&lt;/p&gt;
+
+&lt;h3 id=&quot;转义字符&quot;&gt;转义字符&lt;/h3&gt;
+
+&lt;p&gt;以下特殊字符需要用&lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt;转义得到。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\   backslash
+`   backtick
+*   asterisk
+_   underscore
+{}  curly braces
+[]  square brackets
+()  parentheses
+#   hash mark
++   plus sign
+-   minus sign (hyphen)
+.   dot
+!   exclamation mark
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="알고리즘" /><summary type="html">코드설명 以一个或多个空行来隔开段落；以两个或多个空格来段内换行。 标题 ``` This is an H1 ============= This is an H2</summary></entry></feed>
