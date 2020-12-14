@@ -39,6 +39,7 @@ each element of array A is an integer within the range [1..(N + 1)].
 
 
 
+
 ># 문제 풀이
 
 ```
@@ -47,24 +48,25 @@ import java.util.*;
 class Solution {
     public int solution(int[] A) {
         
-        Arrays.sort(A);
+        Set<Integer> set = new HashSet<>();
 
-        for(int i = 1; i <= A.length; i++ ){
-            if(A[i - 1] != i){
-                return i;
-            }            
+        for(int num : A){
+            if(set.contains(num)){
+                set.remove(num);
+            }else{
+                set.add(num);
+            }
         }
 
-        return A.length + 1;
+        return set.iterator().next();
     }
 }
-
 ```
 
 ## 결과
 
-1. PermMissingElem
-Find the missing element in a given permutation.
+1. OddOccurrencesInArray
+Find value that occurs in odd number of elements.
 Task Score
 100%
 Correctness
@@ -75,7 +77,8 @@ Performance
 
 ## 정답해설
 
-포인트는 정확하게 맞아 떨어졌을때 (1,2,3,4) 이렇게 올때 마지막을 총 길이에 +1을 해주는것이다.
+Set에 대한 사용법을 좀더 익혀야 할것 같다 .. 스택도 조금은 더 알아야 할것 같다
+
 
 
 
